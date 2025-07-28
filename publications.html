@@ -1,17 +1,71 @@
 <!DOCTYPE html>
-<html><head>
-<title>Emerson Torres</title>
-<link rel="icon" type="image/x-icon" href="icon.png">
-  <!-- Para evitar caché -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
+<html lang="es" height="100%">
+<head>
+  <meta charset="UTF-8">
+  <title>Emerson Torres</title>
+  <style>
+    body {
+      background-color: #fce4ec;
+      color: #660000;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: black;
+      color: #FFB6C1;
+    }
+
+    .dark-mode-switch {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .dark-mode-switch label {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .dark-mode-switch input {
+      display: none;
+    }
+
+    .dark-mode-switch span {
+      display: inline-block;
+      width: 50px;
+      height: 25px;
+      background-color: #ccc;
+      border-radius: 25px;
+      position: relative;
+    }
+
+    .dark-mode-switch span::after {
+      content: '';
+      position: absolute;
+      width: 21px;
+      height: 21px;
+      background-color: white;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.3s;
+    }
+
+    .dark-mode-switch input:checked + span::after {
+      transform: translateX(25px);
+    }
+
+    .dark-mode-switch input:checked + span {
+      background-color: #2196f3; /* azul */
+    }
+  </style>
 </head>
-<!--<p style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Este texto usará la fuente Arial</p>-->
-
-<body bgcolor="#fce4ec" text="#660000" link="#f06292" vlink="#b71c1c" alink="#ba68c8">
-
-
+<body bgcolor="#fce4ec" text="#660000" link="#f06292" vlink="#b71c1c" alink="#ba68c8" height="100%">
 
   <table style="width: 100%;"  frame="box" rules="all" border="1" bordercolor="#660000">
     <tr>
@@ -75,18 +129,42 @@
           <p><h2> Publications: </h2></p>
           <p>...under construction</p><br>
 
-      </td>
-    </tr>
-  </table>
+  <!-- Switch -->
+  <div class="dark-mode-switch">
+    <label>
+      Dark mode
+      <input type="checkbox" id="temaSwitch" />
+      <span></span>
+    </label>
+  </div>
 
+  <script>
+    const body = document.body;
+    const switchInput = document.getElementById("temaSwitch");
 
+    function inicializarTema() {
+      const guardado = localStorage.getItem("temaOscuro");
 
+      let oscuro;
+      if (guardado !== null) {
+        oscuro = guardado === "true";
+      } else {
+        oscuro = window.matchMedia &&
+                 window.matchMedia("(prefers-color-scheme: dark)").matches;
+      }
 
+      body.classList.toggle("dark-mode", oscuro);
+      switchInput.checked = oscuro;
+    }
 
+    switchInput.addEventListener("change", () => {
+      const oscuro = switchInput.checked;
+      body.classList.toggle("dark-mode", oscuro);
+      localStorage.setItem("temaOscuro", oscuro);
+    });
 
+    inicializarTema();
+  </script>
 
-    <p align="right">Last modified: Wed 23 Jul 2025 22:29 p.m. UTC -06</p>
-
-
-
-</body></html>
+</body>
+</html>
