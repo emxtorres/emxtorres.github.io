@@ -6,66 +6,96 @@
     <link rel="icon" type="image/png" href="icon.png">
 
   <style>
-    body {
-      background-color: #fce4ec;
-      color: #660000;
-      transition: background-color 0.3s, color 0.3s;
-    }
+  /* Colores base del sitio */
+  body {
+    background-color: #fce4ec; /* rosa claro (tema claro) */
+    color: #660000;
+    transition: background-color 0.3s, color 0.3s;
+  }
 
-    body.dark-mode {
-      background-color: black;
-      color: #FFB6C1;
-    }
+  body.dark-mode {
+    background-color: black;
+    color: #FFB6C1; /* rosa pálido para texto en oscuro */
+  }
 
-    .dark-mode-switch {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+  /* Contenedor del switch */
+  .dark-mode-switch {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
-    .dark-mode-switch label {
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+  .dark-mode-switch label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
-    .dark-mode-switch input {
-      display: none;
-    }
+  /* Ícono sol/luna con transición (sin JS extra) */
+  .theme-icon {
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .theme-icon .sun,
+  .theme-icon .moon {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 1.2rem;
+    line-height: 1;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  /* Estado por defecto (tema claro): sol visible, luna oculta */
+  .theme-icon .sun { opacity: 1; transform: scale(1) rotate(0deg); }
+  .theme-icon .moon { opacity: 0; transform: scale(0.8) rotate(-30deg); }
+  /* En tema oscuro: luna visible, sol oculta */
+  body.dark-mode .theme-icon .sun { opacity: 0; transform: scale(0.8) rotate(30deg); }
+  body.dark-mode .theme-icon .moon { opacity: 1; transform: scale(1) rotate(0deg); }
 
-    .dark-mode-switch span {
-      display: inline-block;
-      width: 50px;
-      height: 25px;
-      background-color: #ccc;
-      border-radius: 25px;
-      position: relative;
-    }
+  /* Input oculto del switch */
+  .dark-mode-switch input {
+    display: none;
+  }
 
-    .dark-mode-switch span::after {
-      content: '';
-      position: absolute;
-      width: 21px;
-      height: 21px;
-      background-color: white;
-      border-radius: 50%;
-      top: 2px;
-      left: 2px;
-      transition: transform 0.3s;
-    }
+  /* Slider del switch (separado del ícono) */
+  .dark-mode-switch .slider {
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+    background-color: #ccc;
+    border-radius: 25px;
+    position: relative;
+    transition: background-color 0.3s ease;
+  }
 
-    .dark-mode-switch input:checked + span::after {
-      transform: translateX(25px);
-    }
+  .dark-mode-switch .slider::after {
+    content: '';
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    background-color: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s ease;
+  }
 
-    .dark-mode-switch input:checked + span {
-      background-color: #FFB6C1; /* azul */
-    }
-  </style>
+  /* Cuando está activado: perilla a la derecha y slider rosa de tu marca */
+  .dark-mode-switch input:checked + .slider {
+    background-color: #FFB6C1; /* rosa */
+  }
+  .dark-mode-switch input:checked + .slider::after {
+    transform: translateX(25px);
+  }
+</style>
+
+
 </head>
 <body bgcolor="#fce4ec" text="#660000" link="#f06292" vlink="#b71c1c" alink="#ba68c8" height="100%">
 <table style="height: 100%; width: 100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0; border: 1px solid #660000;" frame="box" rules="all">
@@ -150,13 +180,19 @@
 
 
   <!-- Switch -->
-  <div class="dark-mode-switch">
-    <label>
-      Dark mode
-      <input type="checkbox" id="temaSwitch" />
-      <span></span>
-    </label>
-  </div>
+<div class="dark-mode-switch">
+  <label>
+    <!-- Ícono reactivo: sol en claro / luna en oscuro -->
+    <span class="theme-icon" aria-hidden="true">
+      <span class="sun">☀️</span>
+      <span class="moon">🌙</span>
+    </span>
+
+    <!-- Interruptor -->
+    <input type="checkbox" id="temaSwitch" />
+    <span class="slider"></span>
+  </label>
+</div>
 
   <script>
     const body = document.body;
