@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es" height="100%">
+<head>
+  <meta charset="UTF-8">
+  <title>Emerson Torres</title>
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=CMU+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+  <style>
+  /* Colores base del sitio */
+  body {
+     font-family: "Noto Serif JP", serif;
+    background-color: #fce4ec; /* rosa claro (tema claro) */
+    color: #660000;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  body.dark-mode {
+    background-color: black;
+    color: #FFB6C1; /* rosa pálido para texto en oscuro */
+  }
+
+  /* Contenedor del switch */
+  .dark-mode-switch {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .dark-mode-switch label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Ícono sol/luna con transición (sin JS extra) */
+  .theme-icon {
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .theme-icon .sun,
+  .theme-icon .moon {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 1.2rem;
+    line-height: 1;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  /* Estado por defecto (tema claro): sol visible, luna oculta */
+  .theme-icon .sun { opacity: 1; transform: scale(1) rotate(0deg); }
+  .theme-icon .moon { opacity: 0; transform: scale(0.8) rotate(-30deg); }
+  /* En tema oscuro: luna visible, sol oculta */
+  body.dark-mode .theme-icon .sun { opacity: 0; transform: scale(0.8) rotate(30deg); }
+  body.dark-mode .theme-icon .moon { opacity: 1; transform: scale(1) rotate(0deg); }
+
+  /* Input oculto del switch */
+  .dark-mode-switch input {
+    display: none;
+  }
+
+  /* Slider del switch (separado del ícono) */
+  .dark-mode-switch .slider {
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+    background-color: #ccc;
+    border-radius: 25px;
+    position: relative;
+    transition: background-color 0.3s ease;
+  }
+
+  .dark-mode-switch .slider::after {
+    content: '';
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    background-color: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s ease;
+  }
+
+  /* Cuando está activado: perilla a la derecha y slider rosa de tu marca */
+  .dark-mode-switch input:checked + .slider {
+    background-color: #FFB6C1; /* rosa */
+  }
+  .dark-mode-switch input:checked + .slider::after {
+    transform: translateX(25px);
+  }
+
+
+/* ===== Barra de navegación superior ===== */
+.topbar{
+  width: 97%;
+  background-color: none;
+  border-bottom: none;
+  padding: 0.4rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative; /* o simplemente elimina la línea "position" */
+  z-index: auto; /* opcional */
+}
+
+/* Contenedor interno para centrar el menú y el switch */
+.topbar nav {
+  flex: 1;
+  display: flex;
+  justify-content: center; /* centra el menú horizontalmente */
+}
+
+/* Menú de navegación */
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.menu a {
+  color: #660000;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s, background-color 0.3s;
+  padding: 6px 10px;
+  border-radius: 0px;
+}
+
+.menu a:hover {
+  background-color: none;
+  color: #f06292;
+}
+
+/* Ajustes para tu switch dentro del header */
+.topbar .dark-mode-switch {
+  position: static;       /* ya no es fixed */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Tema oscuro */
+body.dark-mode .topbar {
+  background-color: none;
+  border-bottom: none;
+}
+body.dark-mode .menu a {
+  color: #FFB6C1; 
+}
+body.dark-mode .menu a:hover {
+  background-color: none;
+  color: #660000; 
+}
+
+/* Ejemplo de código CSS */
+.video-container {
+    position: relative; /* Para centrar o posicionar */
+    width: 100%;
+    max-width: 800px; /* Ancho máximo */
+    margin: 20px auto; /* Centrar el contenedor */
+    padding-bottom: 56.25%; /* Proporción 16:9 (9/16 * 100) */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0; /* Quita el borde si el iframe lo tiene */
+}
+
+</style>
+
+</head>
+<body bgcolor="#fce4ec" text="#660000" link="#f06292" vlink="#b71c1c" alink="#ba68c8" height="100%">
+
+  <!-- Aquí va tu switch original (sin cambiar nada) -->
+  <div class="dark-mode-switch">
+    <label>
+      <span class="theme-icon" aria-hidden="true">
+        <span class="sun">☀️</span>
+        <span class="moon">🌙</span>
+      </span>
+      <input type="checkbox" id="temaSwitch" />
+      <span class="slider"></span>
+    </label>
+  </div>
+</header>
+
+  <table style="height: 95vh; width: 100%; border: none; border-collapse: collapse;" frame="box" rules="all">
+    <tr style="height:100%;">
+      <!-- Columna vacía izquierda (margen) -->
+        <td style="width:1%;border: none; border-collapse: collapse;" valign="top"></td>
+
+      <td style="width: 44%;border: none; border-collapse: collapse;" valign="top">
+          <table style="width: 100%;">
+           <tr>
+              <!-- Columna 1: Información -->
+              <td style="width: 55%;">
+                <h1>Emerson Torres</h1>
+                </p><p> B.Sc. in Mathematics, 2024 <br>    
+                <a href="https://oriente.ues.edu.sv/" target="_blank" rel="noopener noreferrer"> Facultad Multidisciplinaria Oriental</a><br>
+                <a href="https://www.ues.edu.sv/" target="_blank" rel="noopener noreferrer"> Universidad de El Salvador</a><br>
+                <p> <i>“MATHEMATICA AETERNA SVNT”</i></p><br>
+              </td>
+
+              <!-- Columna 2: Fotografía -->
+              <td style="width: 45%;">
+                <div style="text-align: left;">
+                  <img border="0" hspace="0" height="225" align="top" src="Emerson.png" alt="Emerson Torres">
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <!--<hr color="#660000" size="1" width="85%" align="center">--><br>
+
+            <nav>
+              <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="teaching.html">Teaching</a></li>
+                <li><a href="seminars.html">Seminars</a></li>
+              </ul>
+            </nav>
+
+            
+          
+
+          
+
+            <h2> Contact: </h2>
+            <address>
+            <a href="MAILTO:tb19003@ues.edu.sv" target="_blank" rel="noopener noreferrer"> tb19003 at ues.edu.sv</a><br>
+            <a href="MAILTO:emxtorres@gmail.com" target="_blank" rel="noopener noreferrer"> emxtorres at gmail.com</a><br>
+            <a href="https://www.linkedin.com/in/emxtorres" target="_blank" rel="noopener noreferrer"> Linkedin: Emerson Wilfredy Torres Benitez </a><br>
+            <a href="https://www.instagram.com/emxtorres_/" target="_blank" rel="noopener noreferrer"> Instagram: @emxtorres_</a><br>
+            <a href="https://www.facebook.com/emxtorresrk/" target="_blank" rel="noopener noreferrer"> Facebook: Emerson Torres</a><br>
+            Santa Rosa de Lima <br>
+            La Union -  El Salvador <br>
+            </address>
+
+
+
+
+
+      </td>
+
+      <td style="width: 54%;border: none; border-collapse: collapse; border-left: 1px solid #660000; padding: 10px;" valign="top" style="height:100%">
+
+             <center>
+              <img border="0" hspace="0" height="100" src="Logo.png"> <br>
+            </center>
+
+            
+
+
+
+          
+          </p><h2> About me: </h2>
+            <p style="text-align: justify;"> I'm Emerson Torres, a Salvadoran mathematician who <a href="emerson graduation volcan.jpg" target="_blank" rel="noopener noreferrer"> graduated with honors</a> from the <a href="https://www.ues.edu.sv/" target="_blank" rel="noopener noreferrer"> Universidad de El Salvador</a>. 
+            I'm passionate about teaching, research, and applying mathematics to science and technology. 
+            I've worked as a Math and Science teacher at different levels — from high-performance programs like Jóvenes Talento and the ASD-CIDE program to private schools. 
+            Altogether, I've accumulated over 1300 hours of teaching experience, designing materials, assessing learning, and using digital platforms like Moodle, Teams, and Google Classroom to enhance education. 
+            I've also participated in several international advanced training schools, including CIMPA Schools (in Topology and Geometry), EMALCA (El Salvador and Costa Rica), and workshops focused on mathematical modeling and data science with Python, strengthening my academic and research profile. 
+            Languages are another personal goal. Spanish is my native language, I have an intermediate level of English (TOEFL iBT: 71), and I'm currently learning Portuguese. </p>
+
+             <p> My academic interests include:</p>
+
+
+                <ul>
+                    <li>Algorithms</li>
+                    <li>Computational Complexity Theory</li>
+                    <li>Theory of Computation</li>
+                    <li>Linear Optimization</li>
+                    <li>Quantum Computing</li>
+                    <li>Graph Theory</li>
+                </ul>
+
+                <p style="text-align: justify;"> Beyond mathematics, I enjoy video editing, graphic design, music production, and programming (mainly in Python and C). My goal is to keep growing professionally in research, teaching, and developing tech-based mathematical solutions.</p>
+
+                <!-- Ejemplo de código HTML 
+                <div class="video-container">
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/3iTYpWfP0Og?si=xQogqRnCJ9uA388R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>-->
+
+
+
+
+
+                
+      </td>
+      <td style="width:1%;border: none; border-collapse: collapse;" valign="top"></td>
+    </tr>
+  </table>
+
+
+<!-- Línea y texto justo después de la tabla -->
+<hr color="#660000" size="1" width="100%" align="center" style="margin: 10px auto 5px auto;">
+<p align="right" style="margin: 0 5px 5px 0;">
+  Last modified: Mon 28 Jul 2025 10:24 a.m. UTC -06:00
+</p>
+    
+
+
+
+  <script>
+    const body = document.body;
+    const switchInput = document.getElementById("temaSwitch");
+
+    function inicializarTema() {
+      const guardado = localStorage.getItem("temaOscuro");
+
+      let oscuro;
+      if (guardado !== null) {
+        oscuro = guardado === "true";
+      } else {
+        oscuro = window.matchMedia &&
+                 window.matchMedia("(prefers-color-scheme: dark)").matches;
+      }
+
+      body.classList.toggle("dark-mode", oscuro);
+      switchInput.checked = oscuro;
+    }
+
+    switchInput.addEventListener("change", () => {
+      const oscuro = switchInput.checked;
+      body.classList.toggle("dark-mode", oscuro);
+      localStorage.setItem("temaOscuro", oscuro);
+    });
+
+    inicializarTema();
+  </script>
+
+</body>
+</html>
