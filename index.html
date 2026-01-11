@@ -99,6 +99,26 @@
     transform: translateX(25px);
   }
 
+  /* Ejemplo de código CSS */
+.video-container {
+    position: relative; /* Para centrar o posicionar */
+    width: 100%;
+    max-width: 800px; /* Ancho máximo */
+    margin: 20px auto; /* Centrar el contenedor */
+    padding-bottom: 56.25%; /* Proporción 16:9 (9/16 * 100) */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0; /* Quita el borde si el iframe lo tiene */
+}
+
 </style>
 
 </head>
@@ -192,7 +212,10 @@
 
                 <p style="text-align: justify;"> Beyond mathematics, I enjoy video editing, graphic design, music production, and programming (mainly in Python and C). My goal is to keep growing professionally in research, teaching, and developing tech-based mathematical solutions.</p>
 
-
+                <!-- Ejemplo de código HTML -->
+                <div class="video-container">
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/3iTYpWfP0Og?si=xQogqRnCJ9uA388R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
 
 
                 
