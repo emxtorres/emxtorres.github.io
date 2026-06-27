@@ -1,281 +1,138 @@
 <!DOCTYPE html>
-<html lang="es" height="100%">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Emerson Torres</title>
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=CMU+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-
-  <style>
-  /* Colores base del sitio */
-  body {
-     font-family: "Noto Serif JP", serif;
-    background-color: #fce4ec; /* rosa claro (tema claro) */
-    color: #660000;
-    transition: background-color 0.3s, color 0.3s;
-  }
-
-  body.dark-mode {
-    background-color: black;
-    color: #FFB6C1; /* rosa pálido para texto en oscuro */
-  }
-
-  /* Contenedor del switch */
-  .dark-mode-switch {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .dark-mode-switch label {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  /* Ícono sol/luna con transición (sin JS extra) */
-  .theme-icon {
-    position: relative;
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-  .theme-icon .sun,
-  .theme-icon .moon {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    font-size: 1.2rem;
-    line-height: 1;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-  }
-  /* Estado por defecto (tema claro): sol visible, luna oculta */
-  .theme-icon .sun { opacity: 1; transform: scale(1) rotate(0deg); }
-  .theme-icon .moon { opacity: 0; transform: scale(0.8) rotate(-30deg); }
-  /* En tema oscuro: luna visible, sol oculta */
-  body.dark-mode .theme-icon .sun { opacity: 0; transform: scale(0.8) rotate(30deg); }
-  body.dark-mode .theme-icon .moon { opacity: 1; transform: scale(1) rotate(0deg); }
-
-  /* Input oculto del switch */
-  .dark-mode-switch input {
-    display: none;
-  }
-
-  /* Slider del switch (separado del ícono) */
-  .dark-mode-switch .slider {
-    display: inline-block;
-    width: 50px;
-    height: 25px;
-    background-color: #ccc;
-    border-radius: 25px;
-    position: relative;
-    transition: background-color 0.3s ease;
-  }
-
-  .dark-mode-switch .slider::after {
-    content: '';
-    position: absolute;
-    width: 21px;
-    height: 21px;
-    background-color: white;
-    border-radius: 50%;
-    top: 2px;
-    left: 2px;
-    transition: transform 0.3s ease;
-  }
-
-  /* Cuando está activado: perilla a la derecha y slider rosa de tu marca */
-  .dark-mode-switch input:checked + .slider {
-    background-color: #FFB6C1; /* rosa */
-  }
-  .dark-mode-switch input:checked + .slider::after {
-    transform: translateX(25px);
-  }
-
-  /* Ejemplo de código CSS */
-.video-container {
-    position: relative; /* Para centrar o posicionar */
-    width: 100%;
-    max-width: 800px; /* Ancho máximo */
-    margin: 20px auto; /* Centrar el contenedor */
-    padding-bottom: 56.25%; /* Proporción 16:9 (9/16 * 100) */
-    height: 0;
-    overflow: hidden;
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0; /* Quita el borde si el iframe lo tiene */
-}
-
-</style>
-
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body bgcolor="#fce4ec" text="#660000" link="#f06292" vlink="#b71c1c" alink="#ba68c8" height="100%">
-  <table style="height: 95vh; width: 100%; border: none; border-collapse: collapse;" frame="box" rules="all">
-    <tr style="height:100%;">
-      <!-- Columna vacía izquierda (margen) -->
-        <td style="width:1%;border: none; border-collapse: collapse;" valign="top"></td>
+<body>
 
-      <td style="width: 44%;border: none; border-collapse: collapse;" valign="top">
-          <table style="width: 100%;">
-           <tr>
-              <!-- Columna 1: Información -->
-              <td style="width: 55%;">
-                <h1> <a href="https://emxtorres.github.io/" style="text-decoration:none; color: inherit">Emerson Torres</a></h1>
-                </p><p> M.Sc. Student in Applied Mathematics <br>    
-                <a href="https://www.ime.usp.br/" target="_blank" rel="noopener noreferrer">Instituto de Matemática, Estatística e Ciência da Computação</a><br>
-                <a href="https://www5.usp.br/" target="_blank" rel="noopener noreferrer"> Universidade de São Paulo</a><br>
-                <p> <i>«MATHEMATICA ÆTERNA SVNT»</i></p><br>       
-              </td>
-              <!-- Columna 2: Fotografía -->
-              <td style="width: 45%;">
-                <div style="text-align: left;">
-                  <img border="0" hspace="0" height="225" align="top" src="Emerson.png" alt="Emerson Torres">
-                </div>
-              </td>
-            </tr>
-          </table>
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">
+      <img src="Logo.svg" alt="">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">§ Home</a></li>
+      <li><a href="cv.html">§ CV</a></li>
+      <li><a href="publications.html">§ Publications</a></li>
+      <li><a href="teaching.html">§ Teaching</a></li>
+      <li><a href="seminars.html">§ Seminars</a></li>
+    </ul>
+    <button id="burger" aria-label="Menú" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+    <button id="tb" aria-label="Toggle theme"></button>
+  </div>
+</nav>
 
-          <hr color="#660000" size="1" width="85%" align="center">
+<div class="wrap">
 
-          <h2>Index:</h2>
-          <ul style="font-size: 25px;" type="none">
-            <li> <a href="index.html">§Home</a></li>
-            <li> <a href="cv.html">§CV</a></li>
-            <li> <a href="publications.html">§Publications</a></li>
-            <li> <a href="teaching.html">§Teaching activities</a></li>
-            <li> <a href="seminars.html">§Seminars and talks</a></li>
-          </ul>
+  <section class="hero">
+    <div>
+      <p class="hero-eye">M.Sc. Student in Applied Mathematics</p>
+      <h1 class="hero-name">Emerson<br>Torres</h1>
+      <p class="hero-motto">«MATHEMATICA ÆTERNA SVNT»</p>
+      <div class="hero-chips">
+        <a href="https://www.ime.usp.br/" target="_blank" rel="noopener">IME-USP</a>
+        <a href="cv.html">CV</a>
+        <a href="mailto:emerson.torres@ime.usp.br">emerson.torres@ime.usp.br</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="Emerson.png" alt="Emerson Torres">
+    </div>
+  </section>
 
-          
+  <div class="row">
+    <div class="row-label">About</div>
+    <div class="row-body">
+      <p>
+        I'm <a href="emerson graduation volcan.jpg" target="_blank" rel="noopener">Emerson Torres</a>,
+        a Salvadoran mathematician who graduated with honors from the
+        <a href="https://www.ues.edu.sv/" target="_blank" rel="noopener">University of El Salvador</a>.
+        I'm passionate about teaching, research, and applying mathematics to science and technology.
+      </p>
+      <p>
+        I'm currently pursuing a Master's degree in Applied Mathematics at the
+        <a href="https://www.ime.usp.br/" target="_blank" rel="noopener">Instituto de Matemática, Estatística e Ciência da Computação</a>
+        of the <a href="https://www5.usp.br/" target="_blank" rel="noopener">Universidade de São Paulo</a>,
+        under Professor <a href="https://www.ime.usp.br/~egbirgin/" target="_blank" rel="noopener">Ernesto G. Birgin</a>.
+      </p>
+      <p>
+        I've accumulated over 1,300 hours of teaching experience in mathematics and science.
+        I've also attended international schools including CIMPA and EMALCA.
+        Spanish is my native language; I hold an intermediate level of English (TOEFL iBT: 71)
+        and am currently learning Portuguese.
+      </p>
+      <p>
+        Beyond mathematics, I enjoy video editing, graphic design, music production, and programming
+        (mainly Python and C).
+      </p>
+    </div>
+  </div>
 
-            <h2> Contact: </h2>
-            <address>
-            <a href="MAILTO:emerson.torres@ime.usp.br" target="_blank" rel="noopener noreferrer"> emerson.torres@ime.usp.br</a><br>
-            <a href="MAILTO:tb19003@ues.edu.sv" target="_blank" rel="noopener noreferrer"> tb19003@ues.edu.sv</a><br>
-            <a href="https://www.linkedin.com/in/emxtorres" target="_blank" rel="noopener noreferrer"> Linkedin: Emerson Wilfredy Torres Benitez </a><br>
-            <a href="https://www.instagram.com/emxtorres_/" target="_blank" rel="noopener noreferrer"> Instagram: @emxtorres_</a><br>
-            <a href="https://www.facebook.com/emxtorresrk/" target="_blank" rel="noopener noreferrer"> Facebook: Emerson Torres</a><br>
-            Santa Rosa de Lima <br>
-            La Union -  El Salvador <br>
-            </address>
+  <div class="row">
+    <div class="row-label">Research Interests</div>
+    <div class="row-body two-col">
+      <ul>
+        <li>Algorithms</li>
+        <li>Computational Complexity</li>
+        <li>Machine Learning</li>
+      </ul>
+      <ul>
+        <li>Continuous Optimization</li>
+        <li>Graph Theory</li>
+      </ul>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="row-label">Contact</div>
+    <div class="row-body">
+      <div class="cg">
+        <a href="mailto:emerson.torres@ime.usp.br">emerson.torres@ime.usp.br</a>
+        <a href="mailto:tb19003@ues.edu.sv">tb19003@ues.edu.sv</a>
+        <a href="https://www.linkedin.com/in/emxtorres" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/emxtorres_/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/emxtorresrk/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </div>
 
-
-
-
-      </td>
-
-      <td style="width: 54%;border: none; border-collapse: collapse; border-left: 1px solid #660000; padding: 10px;" valign="top" style="height:100%">
-
-             <center>
-              <img border="0" hspace="0" height="100" src="Logo.svg"> <br>
-            </center>
-
-            
-
-
-
-          
-          </p><h2> About me: </h2>
-            <p style="text-align: justify;"> I'm <a href="emerson graduation volcan.jpg" target="_blank" rel="noopener noreferrer"> Emerson Torres</a>, 
-            a Salvadoran mathematician who graduated with honors from the 
-            <a href="https://www.ues.edu.sv/" target="_blank" rel="noopener noreferrer"> University of El Salvador</a>. 
-            I'm passionate about teaching, research, and applying mathematics to science and technology.
-            
-            I'm currently studying a Master’s degree in Applied Mathematics at the <a href="https://www.ime.usp.br/" target="_blank" rel="noopener noreferrer">Instituto de Matemática, Estatística e Ciência da Computação (IME)</a>
-            of the <a href="https://www5.usp.br/" target="_blank" rel="noopener noreferrer"> Universidade de São Paulo</a>, under the supervision of Professor <a href="https://www.ime.usp.br/~egbirgin/" target="_blank" rel="noopener noreferrer">Ernesto G. Birgin</a>.
-
-            I've accumulated over 1300 hours of teaching experience in mathematics and science, working in high-performance academic 
-            programs and private institutions.
-
-            I've also participated in international advanced training schools, including CIMPA and EMALCA. Spanish is my native language,
-             I've an intermediate level of English (TOEFL iBT: 71), and I'm currently learning Portuguese. </p>
-
-             <p> My academic interests include:</p>
-                <ul>
-                    <li>Algorithms</li>
-                    <li>Computational Complexity</li>
-                    <li>Machine Learning</li>
-                    <li>Continuous Optimization</li>
-                    <li>Graph Theory</li>
-                </ul>
-
-                <p style="text-align: justify;"> Beyond mathematics, I enjoy video editing, graphic design, music production, and programming 
-                  (mainly in Python and C). My goal is to keep growing professionally in research, teaching, and developing tech-based mathematical
-                   solutions.</p>
-
-                <!-- Ejemplo de código HTML 
-                <div class="video-container">
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/lroyFMKTYuA?si=P9ulqOx1XZ9jfyA1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>-->
-
-      </td>
-      <td style="width:1%;border: none; border-collapse: collapse;" valign="top"></td>
-    </tr>
-  </table>
-
-<!-- Línea y texto justo después de la tabla -->
-<hr color="#660000" size="1" width="100%" align="center" style="margin: 10px auto 5px auto;">
-<p align="right" style="margin: 0 5px 5px 0;">
-    <a href="emblema-emxtorres.svg" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color: inherit"> © 2026 Emerson Torres </a> | Last modified: Fri 27 Feb 2026 07:02 a.m. UTC -06:00
-</p>
-    
-
-  <!-- Switch -->
-<div class="dark-mode-switch">
-  <label>
-    <!-- Ícono reactivo: sol en claro / luna en oscuro -->
-    <span class="theme-icon" aria-hidden="true">
-      <span class="sun">☀️</span>
-      <span class="moon">🌙</span>
-    </span>
-
-    <!-- Interruptor -->
-    <input type="checkbox" id="temaSwitch" />
-    <span class="slider"></span>
-  </label>
 </div>
 
-  <script>
-    const body = document.body;
-    const switchInput = document.getElementById("temaSwitch");
+<footer class="site-footer">
+  <span>Santa Rosa de Lima, La Unión · El Salvador</span>
+  <a href="emblema-emxtorres.svg" target="_blank" rel="noopener">© 2026 Emerson Torres</a>
+  <span>Last modified: Fri 27 Feb 2026</span>
+</footer>
 
-    function inicializarTema() {
-      const guardado = localStorage.getItem("temaOscuro");
-
-      let oscuro;
-      if (guardado !== null) {
-        oscuro = guardado === "true";
-      } else {
-        oscuro = window.matchMedia &&
-                 window.matchMedia("(prefers-color-scheme: dark)").matches;
-      }
-
-      body.classList.toggle("dark-mode", oscuro);
-      switchInput.checked = oscuro;
-    }
-
-    switchInput.addEventListener("change", () => {
-      const oscuro = switchInput.checked;
-      body.classList.toggle("dark-mode", oscuro);
-      localStorage.setItem("temaOscuro", oscuro);
-    });
-
-    inicializarTema();
-  </script>
+<script>
+  const h=document.documentElement,b=document.getElementById('tb');
+  function t(d){d?h.setAttribute('data-dark',''):h.removeAttribute('data-dark');b.textContent=d?'☀':'☽';localStorage.setItem('dark',d)}
+  const s=localStorage.getItem('dark');
+  t(s!==null?s==='true':window.matchMedia('(prefers-color-scheme:dark)').matches);
+  b.onclick=()=>t(!h.hasAttribute('data-dark'));
+  const burger = document.getElementById('burger');
+const navList = document.querySelector('.nav-links');
+burger.addEventListener('click', () => {
+  const open = burger.classList.toggle('open');
+  navList.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open);
+});
+navList.querySelectorAll('a').forEach(a =>
+  a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    navList.classList.remove('open');
+  })
+);
+</script>
 
 </body>
 </html>

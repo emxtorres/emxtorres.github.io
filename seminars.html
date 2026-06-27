@@ -1,275 +1,197 @@
 <!DOCTYPE html>
-<html lang="es" height="100%">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Emerson Torres</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Seminars — Emerson Torres</title>
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=CMU+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-
-  <style>
-  /* Colores base del sitio */
-  body {
-    font-family: "Noto Serif JP", serif;
-    background-color: #fce4ec; /* rosa claro (tema claro) */
-    color: #660000;
-    transition: background-color 0.3s, color 0.3s;
-  }
-
-  body.dark-mode {
-    background-color: black;
-    color: #FFB6C1; /* rosa pálido para texto en oscuro */
-  }
-
-  /* Contenedor del switch */
-  .dark-mode-switch {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .dark-mode-switch label {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  /* Ícono sol/luna con transición (sin JS extra) */
-  .theme-icon {
-    position: relative;
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-  .theme-icon .sun,
-  .theme-icon .moon {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    font-size: 1.2rem;
-    line-height: 1;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-  }
-  /* Estado por defecto (tema claro): sol visible, luna oculta */
-  .theme-icon .sun { opacity: 1; transform: scale(1) rotate(0deg); }
-  .theme-icon .moon { opacity: 0; transform: scale(0.8) rotate(-30deg); }
-  /* En tema oscuro: luna visible, sol oculta */
-  body.dark-mode .theme-icon .sun { opacity: 0; transform: scale(0.8) rotate(30deg); }
-  body.dark-mode .theme-icon .moon { opacity: 1; transform: scale(1) rotate(0deg); }
-
-  /* Input oculto del switch */
-  .dark-mode-switch input {
-    display: none;
-  }
-
-  /* Slider del switch (separado del ícono) */
-  .dark-mode-switch .slider {
-    display: inline-block;
-    width: 50px;
-    height: 25px;
-    background-color: #ccc;
-    border-radius: 25px;
-    position: relative;
-    transition: background-color 0.3s ease;
-  }
-
-  .dark-mode-switch .slider::after {
-    content: '';
-    position: absolute;
-    width: 21px;
-    height: 21px;
-    background-color: white;
-    border-radius: 50%;
-    top: 2px;
-    left: 2px;
-    transition: transform 0.3s ease;
-  }
-
-  /* Cuando está activado: perilla a la derecha y slider rosa de tu marca */
-  .dark-mode-switch input:checked + .slider {
-    background-color: #FFB6C1; /* rosa */
-  }
-  .dark-mode-switch input:checked + .slider::after {
-    transform: translateX(25px);
-  }
-
-</style>
-
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body bgcolor="#fce4ec" text="#660000" link="#f06292" vlink="#b71c1c" alink="#ba68c8" height="100%">
-  <table style="height: 95vh; width: 100%; border: none; border-collapse: collapse;" frame="box" rules="all">
-    <tr style="height:100%;">
-      <!-- Columna vacía izquierda (margen) -->
-        <td style="width:1%;border: none; border-collapse: collapse;" valign="top"></td>
+<body>
 
-      <td style="width: 44%;border: none; border-collapse: collapse;" valign="top">
-          <table style="width: 100%;">
-           <tr>
-              <!-- Columna 1: Información -->
-              <td style="width: 55%;">
-                <h1> <a href="https://emxtorres.github.io/" style="text-decoration:none; color: inherit">Emerson Torres</a></h1>
-                </p><p> M.Sc. Student in Applied Mathematics <br>    
-                <a href="https://www.ime.usp.br/" target="_blank" rel="noopener noreferrer">Instituto de Matemática, Estatística e Ciência da Computação</a><br>
-                <a href="https://www5.usp.br/" target="_blank" rel="noopener noreferrer"> Universidade de São Paulo</a><br>
-                <p> <i>«MATHEMATICA ÆTERNA SVNT»</i></p><br> 
-              </td>
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">
+      <img src="Logo.svg" alt="">
+      <span>Emerson Torres</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">§ Home</a></li>
+      <li><a href="cv.html">§ CV</a></li>
+      <li><a href="publications.html">§ Publications</a></li>
+      <li><a href="teaching.html">§ Teaching</a></li>
+      <li><a href="seminars.html" class="active">§ Seminars</a></li>
+    </ul>
+    <button id="burger" aria-label="Menú" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+    <button id="tb" aria-label="Toggle theme"></button>
+  </div>
+</nav>
 
-              <!-- Columna 2: Fotografía -->
-              <td style="width: 45%;">
-                <div style="text-align: left;">
-                  <img border="0" hspace="0" height="225" align="top" src="Emerson.png" alt="Emerson Torres">
-                </div>
-              </td>
-            </tr>
-          </table>
+<div class="wrap">
 
-          <hr color="#660000" size="1" width="85%" align="center">
+  <div class="page-head">
+    <h1>Seminars<br>&amp; Talks</h1>
+  </div>
 
-          <h2>Index:</h2>
-          <ul style="font-size: 25px;" type="none">
-            <li> <a href="index.html">§Home</a></li>
-            <li> <a href="cv.html">§CV</a></li>
-            <li> <a href="publications.html">§Publications</a></li>
-            <li> <a href="teaching.html">§Teaching activities</a></li>
-            <li> <a href="seminars.html">§Seminars and talks</a></li>
-          </ul>
+  <div class="row">
+    <div class="row-label">Attendance</div>
+    <div class="row-body tl">
 
-          
+      <div class="tl-item">
+        <div class="tl-title">
+          <a href="https://sites.google.com/view/icmam-differential-geometry/home" target="_blank" rel="noopener">
+            ICMAM Latin America Satellite Conference on Differential Geometry 2025
+          </a>
+        </div>
+        <div class="tl-meta">
+          <span>2025</span>
+          <span>ICMAM Latin America</span>
+        </div>
+        <div class="tl-body">
+          <p>
+            Conference focused on recent results and open problems in differential geometry,
+            fostering interaction among participants of different academic levels.
+          </p>
+        </div>
+        <div class="tl-note">10 training hours</div>
+      </div>
 
-            <h2> Contact: </h2>
-            <address>
-            <a href="MAILTO:emerson.torres@ime.usp.br" target="_blank" rel="noopener noreferrer"> emerson.torres@ime.usp.br</a><br>
-            <a href="MAILTO:tb19003@ues.edu.sv" target="_blank" rel="noopener noreferrer"> tb19003@ues.edu.sv</a><br>
-            <a href="https://www.linkedin.com/in/emxtorres" target="_blank" rel="noopener noreferrer"> Linkedin: Emerson Wilfredy Torres Benitez </a><br>
-            <a href="https://www.instagram.com/emxtorres_/" target="_blank" rel="noopener noreferrer"> Instagram: @emxtorres_</a><br>
-            <a href="https://www.facebook.com/emxtorresrk/" target="_blank" rel="noopener noreferrer"> Facebook: Emerson Torres</a><br>
-            Santa Rosa de Lima <br>
-            La Union -  El Salvador <br>
-            </address>
+      <div class="tl-item">
+        <div class="tl-title">
+          <a href="https://www.matcuer.unam.mx/ResearchSchool/2025/index.html" target="_blank" rel="noopener">
+            Research School in Geometry at Cuernavaca
+          </a>
+        </div>
+        <div class="tl-meta">
+          <span>2025</span>
+          <span>Unidad Cuernavaca, Instituto de Matemáticas — UNAM</span>
+        </div>
+        <div class="tl-body">
+          <p>
+            Two-week intensive school with courses, lectures, and workshops introducing advanced students
+            to active research areas in geometry.
+          </p>
+        </div>
+        <div class="tl-note">50 training hours</div>
+      </div>
 
+      <div class="tl-item">
+        <div class="tl-title">
+          <a href="https://naturales.ues.edu.sv/ecimpasv2024/" target="_blank" rel="noopener">
+            CIMPA Research School El Salvador: Submanifold Theory and Geometric Analysis
+          </a>
+        </div>
+        <div class="tl-meta">
+          <span>2024</span>
+          <span>Universidad de El Salvador</span>
+        </div>
+        <div class="tl-body">
+          <p>
+            CIMPA school introducing recent research in Mathematics, Computer Science, and Theoretical Physics
+            to students and teachers in developing countries.
+          </p>
+        </div>
+        <div class="tl-note">50 training hours</div>
+      </div>
 
+      <div class="tl-item">
+        <div class="tl-title">
+          <a href="https://www.cimpa.info/en/node/7797" target="_blank" rel="noopener">
+            EMALCA Costa Rica
+          </a>
+        </div>
+        <div class="tl-meta">
+          <span>2024</span>
+          <span>Universidad de Costa Rica</span>
+        </div>
+        <div class="tl-body">
+          <p>
+            Latin American and Caribbean School of Mathematics (EMALCA), UMALCA initiative, connecting
+            mathematicians and researchers with undergraduate and graduate students across the region.
+          </p>
+        </div>
+        <div class="tl-note">80 training hours</div>
+      </div>
 
+      <div class="tl-item">
+        <div class="tl-title">
+          <a href="https://sites.google.com/ues.edu.sv/primeraescuelademodelamiento/inicio" target="_blank" rel="noopener">
+            First School of Applied Mathematical Modeling
+          </a>
+        </div>
+        <div class="tl-meta">
+          <span>2023</span>
+          <span>Universidad de El Salvador</span>
+        </div>
+        <div class="tl-body">
+          <p>
+            Three-day school taught by professors from Universidad Católica del Maule, Chile,
+            focused on mathematics as a tool to model natural phenomena.
+          </p>
+        </div>
+        <div class="tl-note">24 training hours</div>
+      </div>
 
+      <div class="tl-item">
+        <div class="tl-title">
+          <a href="https://emalcaelsalvador2023com.wordpress.com/" target="_blank" rel="noopener">
+            EMALCA El Salvador
+          </a>
+        </div>
+        <div class="tl-meta">
+          <span>2023</span>
+          <span>Universidad de El Salvador</span>
+        </div>
+        <div class="tl-note">50 training hours</div>
+      </div>
 
-      </td>
+      <div class="tl-item">
+        <div class="tl-title">
+          <a href="https://ecimpasv2020.org/" target="_blank" rel="noopener">
+            CIMPA Research School El Salvador: Algebraic Methods in Topology
+          </a>
+        </div>
+        <div class="tl-meta">
+          <span>2022</span>
+          <span>Universidad de El Salvador</span>
+        </div>
+        <div class="tl-note">50 training hours</div>
+      </div>
 
-      <td style="width: 54%;border: none; border-collapse: collapse; border-left: 1px solid #660000; padding: 10px;" valign="top" style="height:100%">
+      <div class="tl-item">
+        <div class="tl-title">Introduction to Data Science with Python</div>
+        <div class="tl-meta">
+          <span>2022</span>
+          <span>Mathematicians Association of El Salvador (AMATES)</span>
+        </div>
+        <div class="tl-body">
+          <p>Virtual workshop focused on data analysis with Python / Pandas. Mar. 28 – Apr. 1, 2022.</p>
+        </div>
+        <div class="tl-note">8 training hours</div>
+      </div>
 
-             <center>
-              <img border="0" hspace="0" height="100" src="Logo.svg"> <br>
-            </center>
+    </div>
+  </div>
 
-            
-
-
-
-          
-          <p><h2> Seminars and Talks attendence: </h2></p>
-          <ul>
-            <li style="text-align: justify;">2025 –  <a href="https://sites.google.com/view/icmam-differential-geometry/home" target="_blank" rel="noopener noreferrer"> <b>ICMAM Latin America Satellite Conference on Differential Geometry 2025 </b></a>, ICMAM Latin America<br>
-              This conference, focused on bringing together researchers to present recent results and discuss open problems in differential geometry. The event aimed to foster interaction among participants of different academic levels and promote the exchange of ideas in this field.<br>
-              <i>Total training hours: 10 hours</i>
-            </li><br>
-
-            <li style="text-align: justify;">2025 –  <a href="https://www.matcuer.unam.mx/ResearchSchool/2025/index.html" target="_blank" rel="noopener noreferrer"> <b>Research School in Geometry at Cuernavaca </b></a>, Unidad Cuernavaca del Instituto de Matemáticas, UNAM<br>
-              Two-week intensive school organized by the Cuernavaca Unit of the Institute of Mathematics at UNAM, featuring courses, lectures, workshops, and discussion sessions led by experts to introduce advanced students to topics in active research in geometry.<br>
-              <i>Total training hours: 50 hours</i>
-            </li><br>
-
-
-            <li style="text-align: justify;">2024 – <a href="https://naturales.ues.edu.sv/ecimpasv2024/" target="_blank" rel="noopener noreferrer"> <b>CIMPA Research School El Salvador: Submanifold Theory and Geometric Analysis</b></a>, University of El Salvador<br>
-              CIMPA Schools are programs organized by CIMPA in developing countries, focused on introducing recent research in Mathematics, Computer Science, and Theoretical Physics, aimed at students and research-oriented teachers.<br>
-              <i>Total training hours: 50 hours</i>
-            </li><br>
-
-            <li style="text-align: justify;">2024 – <a href="https://www.cimpa.info/en/node/7797" target="_blank" rel="noopener noreferrer"> <b>EMALCA Costa Rica</b></a>, University of Costa Rica<br>
-              The Latin American and Caribbean School of Mathematics (EMALCA), an initiative of UMALCA, aims to promote the development of mathematics in the region by connecting mathematicians and researchers with undergraduate and graduate students, with the support of CIMPA.<br>
-              <i>Total training hours: 80 hours</i>
-            </li><br>
-
-            <li style="text-align: justify;">2023 – <a href="https://sites.google.com/ues.edu.sv/primeraescuelademodelamiento/inicio?authuser=0&pli=1" target="_blank" rel="noopener noreferrer"> <b>First School of Applied Mathematical Modeling</b></a>, University of El Salvador<br>
-              The First School of Applied Mathematical Modeling, taught by professors from the Catholic University of Maule, Chile, lasted for 3 days. It focused on the use of mathematics as a tool to model natural phenomena.<br>
-              <i>Total training hours: 24 hours</i>
-            </li><br>
-
-            <li style="text-align: justify;">2023 – <a href="https://emalcaelsalvador2023com.wordpress.com/" target="_blank" rel="noopener noreferrer"> <b>EMALCA El Salvador</b></a>, University of El Salvador<br>
-              <i>Total training hours: 50 hours</i>
-            </li><br>
-
-            <li style="text-align: justify;">2022 – <a href="https://ecimpasv2020.org/" target="_blank" rel="noopener noreferrer"> <b>CIMPA Research School El Salvador: Algebraic Methods in Topology</b></a>, University of El Salvador<br>
-              <i>Total training hours: 50 hours</i>
-            </li><br>
-
-            <li style="text-align: justify;">2022 – <b>Introduction to Data Science with Python</b>, Mathematicians Association of El Salvador (AMATES)<br>
-              It was a virtual workshop held from March 28 to April 1, 2022, via ZOOM, focused on data analysis with Python using the Pandas library.<br>
-              <i>Total training hours: 8 hours</i>
-            </li>
-          </ul>
-
-
-
-                
-      </td>
-      <td style="width:1%;border: none; border-collapse: collapse;" valign="top"></td>
-    </tr>
-  </table>
-
-
-<!-- Línea y texto justo después de la tabla -->
-<hr color="#660000" size="1" width="100%" align="center" style="margin: 10px auto 5px auto;">
-<p align="right" style="margin: 0 5px 5px 0;">
-  <a href="emblema-emxtorres.svg" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color: inherit"> © 2026 Emerson Torres </a> | Last modified: Fri 27 Feb 2026 06:47 a.m. UTC -06:00
-</p>
-    
-
-  <!-- Switch -->
-<div class="dark-mode-switch">
-  <label>
-    <!-- Ícono reactivo: sol en claro / luna en oscuro -->
-    <span class="theme-icon" aria-hidden="true">
-      <span class="sun">☀️</span>
-      <span class="moon">🌙</span>
-    </span>
-
-    <!-- Interruptor -->
-    <input type="checkbox" id="temaSwitch" />
-    <span class="slider"></span>
-  </label>
 </div>
 
-  <script>
-    const body = document.body;
-    const switchInput = document.getElementById("temaSwitch");
+<footer class="site-footer">
+  <a href="emblema-emxtorres.svg" target="_blank" rel="noopener">© 2026 Emerson Torres</a>
+  <span>Last modified: Fri 27 Feb 2026</span>
+</footer>
 
-    function inicializarTema() {
-      const guardado = localStorage.getItem("temaOscuro");
-
-      let oscuro;
-      if (guardado !== null) {
-        oscuro = guardado === "true";
-      } else {
-        oscuro = window.matchMedia &&
-                 window.matchMedia("(prefers-color-scheme: dark)").matches;
-      }
-
-      body.classList.toggle("dark-mode", oscuro);
-      switchInput.checked = oscuro;
-    }
-
-    switchInput.addEventListener("change", () => {
-      const oscuro = switchInput.checked;
-      body.classList.toggle("dark-mode", oscuro);
-      localStorage.setItem("temaOscuro", oscuro);
-    });
-
-    inicializarTema();
-  </script>
+<script>
+  const h=document.documentElement,b=document.getElementById('tb');
+  function t(d){d?h.setAttribute('data-dark',''):h.removeAttribute('data-dark');b.textContent=d?'☀':'☽';localStorage.setItem('dark',d)}
+  const s=localStorage.getItem('dark');
+  t(s!==null?s==='true':window.matchMedia('(prefers-color-scheme:dark)').matches);
+  b.onclick=()=>t(!h.hasAttribute('data-dark'));
+</script>
 
 </body>
 </html>

@@ -1,236 +1,67 @@
 <!DOCTYPE html>
-<html lang="es" height="100%">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Emerson Torres</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Publications — Emerson Torres</title>
   <link rel="icon" type="image/png" href="icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=CMU+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-
-  <style>
-  /* Colores base del sitio */
-  body {
-    font-family: "Noto Serif JP", serif;
-    background-color: #fce4ec; /* rosa claro (tema claro) */
-    color: #660000;
-    transition: background-color 0.3s, color 0.3s;
-  }
-
-  body.dark-mode {
-    background-color: black;
-    color: #FFB6C1; /* rosa pálido para texto en oscuro */
-  }
-
-  /* Contenedor del switch */
-  .dark-mode-switch {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .dark-mode-switch label {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  /* Ícono sol/luna con transición (sin JS extra) */
-  .theme-icon {
-    position: relative;
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-  .theme-icon .sun,
-  .theme-icon .moon {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    font-size: 1.2rem;
-    line-height: 1;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-  }
-  /* Estado por defecto (tema claro): sol visible, luna oculta */
-  .theme-icon .sun { opacity: 1; transform: scale(1) rotate(0deg); }
-  .theme-icon .moon { opacity: 0; transform: scale(0.8) rotate(-30deg); }
-  /* En tema oscuro: luna visible, sol oculta */
-  body.dark-mode .theme-icon .sun { opacity: 0; transform: scale(0.8) rotate(30deg); }
-  body.dark-mode .theme-icon .moon { opacity: 1; transform: scale(1) rotate(0deg); }
-
-  /* Input oculto del switch */
-  .dark-mode-switch input {
-    display: none;
-  }
-
-  /* Slider del switch (separado del ícono) */
-  .dark-mode-switch .slider {
-    display: inline-block;
-    width: 50px;
-    height: 25px;
-    background-color: #ccc;
-    border-radius: 25px;
-    position: relative;
-    transition: background-color 0.3s ease;
-  }
-
-  .dark-mode-switch .slider::after {
-    content: '';
-    position: absolute;
-    width: 21px;
-    height: 21px;
-    background-color: white;
-    border-radius: 50%;
-    top: 2px;
-    left: 2px;
-    transition: transform 0.3s ease;
-  }
-
-  /* Cuando está activado: perilla a la derecha y slider rosa de tu marca */
-  .dark-mode-switch input:checked + .slider {
-    background-color: #FFB6C1; /* rosa */
-  }
-  .dark-mode-switch input:checked + .slider::after {
-    transform: translateX(25px);
-  }
-
-</style>
-
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body bgcolor="#fce4ec" text="#660000" link="#f06292" vlink="#b71c1c" alink="#ba68c8" height="100%">
-  <table style="height: 95vh; width: 100%; border: none; border-collapse: collapse;" frame="box" rules="all">
-    <tr style="height:100%;">
-      <!-- Columna vacía izquierda (margen) -->
-        <td style="width:1%;border: none; border-collapse: collapse;" valign="top"></td>
+<body>
 
-      <td style="width: 44%;border: none; border-collapse: collapse;" valign="top">
-          <table style="width: 100%;">
-           <tr>
-              <!-- Columna 1: Información -->
-              <td style="width: 55%;">
-                <h1> <a href="https://emxtorres.github.io/" style="text-decoration:none; color: inherit">Emerson Torres</a></h1>
-                </p><p> M.Sc. Student in Applied Mathematics <br>    
-                <a href="https://www.ime.usp.br/" target="_blank" rel="noopener noreferrer">Instituto de Matemática, Estatística e Ciência da Computação</a><br>
-                <a href="https://www5.usp.br/" target="_blank" rel="noopener noreferrer"> Universidade de São Paulo</a><br>
-                <p> <i>«MATHEMATICA ÆTERNA SVNT»</i></p><br> 
-              </td>
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">
+      <img src="Logo.svg" alt="">
+      <span>Emerson Torres</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">§ Home</a></li>
+      <li><a href="cv.html">§ CV</a></li>
+      <li><a href="publications.html" class="active">§ Publications</a></li>
+      <li><a href="teaching.html">§ Teaching</a></li>
+      <li><a href="seminars.html">§ Seminars</a></li>
+    </ul>
+    <button id="burger" aria-label="Menú" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+    <button id="tb" aria-label="Toggle theme"></button>
+  </div>
+</nav>
 
-              <!-- Columna 2: Fotografía -->
-              <td style="width: 45%;">
-                <div style="text-align: left;">
-                  <img border="0" hspace="0" height="225" align="top" src="Emerson.png" alt="Emerson Torres">
-                </div>
-              </td>
-            </tr>
-          </table>
+<div class="wrap">
 
-          <hr color="#660000" size="1" width="85%" align="center">
+  <div class="page-head">
+    <h1>Publications</h1>
+  </div>
 
-          <h2>Index:</h2>
-          <ul style="font-size: 25px;" type="none">
-            <li> <a href="index.html">§Home</a></li>
-            <li> <a href="cv.html">§CV</a></li>
-            <li> <a href="publications.html">§Publications</a></li>
-            <li> <a href="teaching.html">§Teaching activities</a></li>
-            <li> <a href="seminars.html">§Seminars and talks</a></li>
-          </ul>
+  <div class="row">
+    <div class="row-label">Status</div>
+    <div class="row-body">
+      <div class="empty">
+        <div class="empty-n">∅</div>
+        <p>Work in progress — check back soon.</p>
+      </div>
+    </div>
+  </div>
 
-          
-
-            <h2> Contact: </h2>
-            <address>
-            <a href="MAILTO:emerson.torres@ime.usp.br" target="_blank" rel="noopener noreferrer"> emerson.torres@ime.usp.br</a><br>
-            <a href="MAILTO:tb19003@ues.edu.sv" target="_blank" rel="noopener noreferrer"> tb19003@ues.edu.sv</a><br>
-            <a href="https://www.linkedin.com/in/emxtorres" target="_blank" rel="noopener noreferrer"> Linkedin: Emerson Wilfredy Torres Benitez </a><br>
-            <a href="https://www.instagram.com/emxtorres_/" target="_blank" rel="noopener noreferrer"> Instagram: @emxtorres_</a><br>
-            <a href="https://www.facebook.com/emxtorresrk/" target="_blank" rel="noopener noreferrer"> Facebook: Emerson Torres</a><br>
-            Santa Rosa de Lima <br>
-            La Union -  El Salvador <br>
-            </address>
-
-
-
-
-
-      </td>
-
-      <td style="width: 54%;border: none; border-collapse: collapse; border-left: 1px solid #660000; padding: 10px;" valign="top" style="height:100%">
-
-             <center>
-              <img border="0" hspace="0" height="100" src="Logo.svg"> <br>
-            </center>
-
-            
-
-
-
-          
-          <p><h2> Publications: </h2></p>
-          <p>...under construction</p><br>
-
-
-
-
-                
-      </td>
-      <td style="width:1%;border: none; border-collapse: collapse;" valign="top"></td>
-    </tr>
-  </table>
-
-<!-- Línea y texto justo después de la tabla -->
-<hr color="#660000" size="1" width="100%" align="center" style="margin: 10px auto 5px auto;">
-<p align="right" style="margin: 0 5px 5px 0;">
-  <a href="emblema-emxtorres.svg" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color: inherit"> © 2026 Emerson Torres </a> | Last modified: Fri 27 Feb 2026 06:45 a.m. UTC -06:00
-</p>
-    
-
-  <!-- Switch -->
-<div class="dark-mode-switch">
-  <label>
-    <!-- Ícono reactivo: sol en claro / luna en oscuro -->
-    <span class="theme-icon" aria-hidden="true">
-      <span class="sun">☀️</span>
-      <span class="moon">🌙</span>
-    </span>
-
-    <!-- Interruptor -->
-    <input type="checkbox" id="temaSwitch" />
-    <span class="slider"></span>
-  </label>
 </div>
 
-  <script>
-    const body = document.body;
-    const switchInput = document.getElementById("temaSwitch");
+<footer class="site-footer">
+  <a href="emblema-emxtorres.svg" target="_blank" rel="noopener">© 2026 Emerson Torres</a>
+  <span>Last modified: Fri 27 Feb 2026</span>
+</footer>
 
-    function inicializarTema() {
-      const guardado = localStorage.getItem("temaOscuro");
-
-      let oscuro;
-      if (guardado !== null) {
-        oscuro = guardado === "true";
-      } else {
-        oscuro = window.matchMedia &&
-                 window.matchMedia("(prefers-color-scheme: dark)").matches;
-      }
-
-      body.classList.toggle("dark-mode", oscuro);
-      switchInput.checked = oscuro;
-    }
-
-    switchInput.addEventListener("change", () => {
-      const oscuro = switchInput.checked;
-      body.classList.toggle("dark-mode", oscuro);
-      localStorage.setItem("temaOscuro", oscuro);
-    });
-
-    inicializarTema();
-  </script>
+<script>
+  const h=document.documentElement,b=document.getElementById('tb');
+  function t(d){d?h.setAttribute('data-dark',''):h.removeAttribute('data-dark');b.textContent=d?'☀':'☽';localStorage.setItem('dark',d)}
+  const s=localStorage.getItem('dark');
+  t(s!==null?s==='true':window.matchMedia('(prefers-color-scheme:dark)').matches);
+  b.onclick=()=>t(!h.hasAttribute('data-dark'));
+</script>
 
 </body>
 </html>
