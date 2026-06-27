@@ -25,11 +25,11 @@ strong,b { font-weight:600 }
 
 /* ─── base — todo usa Noto Serif JP via herencia ─── */
 html { font-family:var(--se); background:var(--bg); color:var(--fg); transition:background .3s,color .3s }
-a { color:var(--ac); text-decoration:none; transition:color .15s }
-a:hover { color:var(--fg) }
-p { font-size:.9rem; line-height:1.82; margin-bottom:.6rem }
+a {  font-size:1rem; color:var(--ac); text-decoration:none; transition:color .15s }
+a:hover { font-size:1rem; color:var(--fg) }
+p { font-size:1rem; line-height:1.82; margin-bottom:.6rem }
 p:last-child { margin-bottom:0 }
-li { font-size:.9rem; line-height:1.75 }
+li { font-size:1rem; line-height:1.75 }
 
 /* ─── nav ─── */
 .site-nav {
@@ -43,12 +43,12 @@ li { font-size:.9rem; line-height:1.75 }
 }
 .nav-brand {
   display:flex; align-items:center; gap:.55rem;
-  color:var(--fg); font-size:.88rem; font-weight:600; flex-shrink:0;
+  color:var(--fg); font-size:1.2rem; font-weight:600; flex-shrink:0;
 }
-.nav-brand img { height:22px; width:auto }
+.nav-brand img { height:48px; width:auto }
 .nav-links { display:flex; gap:1.4rem; list-style:none; flex:1; justify-content:flex-end }
 .nav-links a {
-  font-size:.82rem; color:var(--mu);
+  font-size:1rem; color:var(--mu);
   letter-spacing:.02em; position:relative; padding-bottom:3px;
 }
 .nav-links a::after {
@@ -78,64 +78,66 @@ li { font-size:.9rem; line-height:1.75 }
   gap:2rem; padding:5rem 2rem 3.5rem; border-bottom:1px solid var(--bd);
 }
 .hero-eye {
-  font-size:.72rem; letter-spacing:.2em;
+  font-size:0.75rem; letter-spacing:.2em;
   text-transform:uppercase; color:var(--mu); margin-bottom:1.1rem;
 }
 .hero-name {
-  font-size:clamp(3.4rem,9vw,6.8rem); font-weight:200; line-height:.95;
+  font-size:clamp(2.4rem,7vw,4.8rem); font-weight:500; line-height:.95;
   letter-spacing:-.03em; margin-bottom:1.4rem;
 }
-.hero-motto { font-size:.86rem; font-style:italic; color:var(--mu); margin-bottom:1.1rem }
-.hero-chips { display:flex; gap:.7rem; flex-wrap:wrap }
+.hero-motto { font-size:1rem; font-style:italic; color:var(--mu); margin-bottom:1.1rem }
+.hero-chips { display:flex; gap:1rem; flex-wrap:wrap }
 .hero-chips a {
-  font-size:.8rem; color:var(--mu);
+  font-size:1rem; color:var(--mu);
   border-bottom:1px solid var(--bd); padding-bottom:1px;
 }
 .hero-chips a:hover { color:var(--fg); border-color:var(--fg) }
 .hero-photo img {
-  width:150px; height:150px; border-radius:50%;
+  width:250px; height:250px; border-radius:50%;
   object-fit:cover; object-position:top center;
 }
 
 /* ─── page title (páginas internas) ─── */
 .page-head { padding:4rem 2rem 2.5rem; border-bottom:1px solid var(--bd) }
 .page-head h1 {
-  font-size:clamp(2.6rem,7vw,5rem); font-weight:200;
+  font-size:clamp(3.4rem,6vw,3.8rem); font-weight:400;
   letter-spacing:-.025em; line-height:1;
 }
 
-/* ─── fila editorial (label + cuerpo) ─── */
+/* ─── fila editorial ─── */
 .row {
   display:grid; grid-template-columns:150px 1fr;
+  align-items: start;                    /* ambas columnas desde el tope */
   gap:2.5rem; padding:2.5rem 2rem; border-bottom:1px solid var(--bd);
 }
 .row-label {
-  font-size:.68rem; letter-spacing:.18em;
+  font-size:1rem; letter-spacing:.18em;
   text-transform:uppercase; color:var(--mu);
-  position:sticky; top:calc(var(--nh) + 1.25rem); height:fit-content;
+  position:sticky; top:calc(var(--nh) + 1.25rem);
 }
-.row-body { min-width:0 }
+.row-body { min-width:0; text-align:justify; }
 
 /* ─── timeline ─── */
 .tl { display:flex; flex-direction:column }
-.tl-item { padding:1.6rem 0; border-bottom:1px solid var(--bd) }
+.tl-item { padding:1.6rem 0; border-bottom:1px solid var(--bd); }
+.tl-item:first-child { padding-top:0 }   /* ← esto alinea label con primer entry */
 .tl-item:last-child { border-bottom:none; padding-bottom:0 }
-.tl-title { font-size:.97rem; font-weight:600; line-height:1.35; margin-bottom:.3rem }
+.tl-title { font-size:1rem; font-weight:600; line-height:1.35; margin-bottom:.3rem }
 .tl-meta {
   display:flex; gap:1rem; flex-wrap:wrap;
-  font-size:.78rem; color:var(--mu); margin-bottom:.65rem;
+  font-size:1rem; color:var(--mu); margin-bottom:.65rem;
 }
 .tl-meta span::before { content:'· '; opacity:.4 }
 .tl-meta span:first-child::before { content:'' }
 .tl-body p { margin-bottom:.45rem }
 .tl-body ul { padding-left:1.1rem; margin-top:.35rem }
 .tl-body li { margin-top:.3rem }
-.tl-note { font-size:.78rem; color:var(--mu); margin-top:.55rem }
+.tl-note { font-size:1rem; color:var(--mu); margin-top:.55rem }
 
 /* ─── pills ─── */
 .pills { display:flex; gap:.4rem; flex-wrap:wrap }
 .pills a {
-  font-size:.82rem; padding:.3rem .85rem;
+  font-size:1rem; padding:.3rem .85rem;
   border:1px solid var(--bd); border-radius:999px; color:var(--ac);
   transition:background .15s,border-color .15s;
 }
@@ -143,7 +145,7 @@ li { font-size:.9rem; line-height:1.75 }
 
 /* ─── grid de contacto ─── */
 .cg { display:grid; grid-template-columns:1fr 1fr; gap:.5rem 2.5rem }
-.cg a,.cg span { font-size:.86rem; color:var(--mu); transition:color .15s; word-break:break-all }
+.cg a,.cg span { font-size:1rem; color:var(--mu); transition:color .15s; word-break:break-all }
 .cg a:hover { color:var(--fg) }
 
 /* ─── lista dos columnas ─── */
@@ -153,7 +155,7 @@ li { font-size:.9rem; line-height:1.75 }
 .site-footer {
   border-top:1px solid var(--bd); padding:1.25rem 2rem;
   display:flex; justify-content:space-between; align-items:center;
-  font-size:.76rem; color:var(--mu);
+  font-size:1rem; color:var(--mu);
   max-width:960px; margin:0 auto;
 }
 .site-footer a { color:inherit }
@@ -181,7 +183,7 @@ li { font-size:.9rem; line-height:1.75 }
   .nav-brand { flex:1 }
   .nav-links {
     order:4;
-    width:100%;
+    width:75%;
     flex-wrap:nowrap;
     justify-content:flex-start;
     gap:1.2rem;
@@ -198,7 +200,11 @@ li { font-size:.9rem; line-height:1.75 }
     grid-template-columns:1fr;
     padding:2.5rem 1.2rem 2rem;
   }
-  .hero-photo { display:none }
+  .hero-photo { display: block;      /* Muestra la foto */
+  width: 60%;          /* Ocupará solo el 60% del ancho de la pantalla (hazla más chica bajando este % ) */
+  max-width: 100px;    /* Límite: no medirá más de 250px aunque la pantalla sea grande */
+  height: auto;        /* Truco vital: mantiene la proporción para que no se vea aplastada */
+  margin: 0 auto;}
   .hero-name {
     font-size:clamp(2.6rem,12vw,3.6rem);
     margin-bottom:1rem;
