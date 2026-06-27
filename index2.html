@@ -24,6 +24,9 @@
       <li><a href="teaching.html">§ Teaching</a></li>
       <li><a href="seminars.html">§ Seminars</a></li>
     </ul>
+    <button id="burger" aria-label="Menú" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
     <button id="tb" aria-label="Toggle theme"></button>
   </div>
 </nav>
@@ -116,6 +119,19 @@
   const s=localStorage.getItem('dark');
   t(s!==null?s==='true':window.matchMedia('(prefers-color-scheme:dark)').matches);
   b.onclick=()=>t(!h.hasAttribute('data-dark'));
+  const burger = document.getElementById('burger');
+const navList = document.querySelector('.nav-links');
+burger.addEventListener('click', () => {
+  const open = burger.classList.toggle('open');
+  navList.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open);
+});
+navList.querySelectorAll('a').forEach(a =>
+  a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    navList.classList.remove('open');
+  })
+);
 </script>
 
 </body>

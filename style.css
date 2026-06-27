@@ -169,73 +169,63 @@ li { font-size:1rem; line-height:1.75 }
 /* ─────────────────────────────────────────
    RESPONSIVE — móvil
 ───────────────────────────────────────── */
+
 @media (max-width:640px) {
 
-  /* nav: fila 1 = logo+nombre / toggle
-          fila 2 = enlaces scrollables */
+  /* ── nav ── */
   .nav-inner {
-    flex-wrap:wrap;
-    height:auto;
-    padding:.7rem 1.2rem .55rem;
-    gap:0;
-    row-gap:0;
+    flex-wrap:wrap; height:auto;
+    padding:.7rem 1.2rem; gap:.6rem;
   }
   .nav-brand { flex:1 }
-  .nav-links {
-    order:4;
-    width:75%;
-    flex-wrap:nowrap;
-    justify-content:flex-start;
-    gap:1.2rem;
-    margin-top:.6rem;
-    padding-bottom:.35rem;
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:none;
-  }
-  .nav-links::-webkit-scrollbar { display:none }
 
-  /* hero */
-  .hero {
-    grid-template-columns:1fr;
-    padding:2.5rem 1.2rem 2rem;
+  /* botón hamburguesa */
+  #burger {
+    display:flex; flex-direction:column;
+    justify-content:center; gap:5px;
+    width:32px; height:32px;
+    background:transparent;
+    border:1px solid var(--bd); border-radius:6px;
+    cursor:pointer; padding:6px; flex-shrink:0;
   }
+  #burger span {
+    display:block; height:1.5px;
+    background:var(--fg); border-radius:2px;
+    transition:transform .22s, opacity .18s;
+  }
+  #burger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg) }
+  #burger.open span:nth-child(2) { opacity:0 }
+  #burger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg) }
+
+  /* menú colapsado por defecto */
+  .nav-links {
+    order:4; width:100%; flex-direction:column;
+    gap:0; justify-content:flex-start;
+    max-height:0; overflow:hidden; opacity:0;
+    transition:max-height .3s ease, opacity .22s ease;
+  }
+  .nav-links.open { max-height:360px; opacity:1 }
+  .nav-links li { border-top:1px solid var(--bd) }
+  .nav-links a {
+    display:block; padding:.75rem .2rem;
+    font-size:.92rem; letter-spacing:.02em;
+  }
+  .nav-links a::after { display:none }
+
+  /* resto del responsive sin cambios */
+  .hero { grid-template-columns:1fr; padding:2.5rem 1.2rem 2rem }
   .hero-photo { display: block;      /* Muestra la foto */
   width: 60%;          /* Ocupará solo el 60% del ancho de la pantalla (hazla más chica bajando este % ) */
-  max-width: 100px;    /* Límite: no medirá más de 250px aunque la pantalla sea grande */
+  max-width: 50px;    /* Límite: no medirá más de 250px aunque la pantalla sea grande */
   height: auto;        /* Truco vital: mantiene la proporción para que no se vea aplastada */
   margin: 0 auto;}
-  .hero-name {
-    font-size:clamp(2.6rem,12vw,3.6rem);
-    margin-bottom:1rem;
-  }
+  .hero-name { font-size:clamp(2.6rem,12vw,3.6rem); margin-bottom:1rem }
   .hero-eye { margin-bottom:.7rem; font-size:.68rem }
-
-  /* encabezado de páginas internas */
   .page-head { padding:2rem 1.2rem 1.5rem }
-
-  /* filas editoriales */
-  .row {
-    grid-template-columns:1fr;
-    gap:.4rem;
-    padding:1.6rem 1.2rem;
-  }
-  .row-label {
-    position:static;
-    margin-bottom:.35rem;
-    font-size:.66rem;
-  }
-
-  /* componentes */
+  .row { grid-template-columns:1fr; gap:.4rem; padding:1.6rem 1.2rem }
+  .row-label { position:static; margin-bottom:.35rem; font-size:.66rem }
   .cg { grid-template-columns:1fr }
   .two-col { grid-template-columns:1fr }
   .tl-meta { gap:.5rem }
-
-  /* footer */
-  .site-footer {
-    flex-direction:column;
-    gap:.3rem;
-    text-align:center;
-    padding:1rem 1.2rem;
-  }
+  .site-footer { flex-direction:column; gap:.3rem; text-align:center; padding:1rem 1.2rem }
 }
