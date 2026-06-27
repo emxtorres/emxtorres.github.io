@@ -220,15 +220,14 @@ display: flex;
 
   /* resto del responsive sin cambios */
   .hero { grid-template-columns:1fr; padding:2.5rem 1.2rem 2rem }
-.hero-photo {
-  display: block;
-  width: 100%;
-  max-width: 50px; 
-  height: auto;
-  margin: 0 auto;
-  border-radius: 0;
-  align-self: center;
-}
+  .hero-photo {
+    display: block;
+    width: 50px;  
+    height: 50px;
+    margin: 0 auto;
+    border-radius: 0;
+    align-self: center;
+  }
   .hero-name { font-size:clamp(2.6rem,12vw,3.6rem); margin-bottom:1rem }
   .hero-eye { margin-bottom:.7rem; font-size:.68rem }
   .page-head { padding:2rem 1.2rem 1.5rem }
