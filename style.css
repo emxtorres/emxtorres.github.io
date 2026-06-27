@@ -221,7 +221,7 @@ display: flex;
   /* resto del responsive sin cambios */
   .hero { grid-template-columns:1fr; padding:2.5rem 1.2rem 2rem }
   .hero-photo { display: block;      /* Muestra la foto */
-  width: 60%;          /* Ocupará solo el 60% del ancho de la pantalla (hazla más chica bajando este % ) */
+  width: 100%;          /* Ocupará solo el 60% del ancho de la pantalla (hazla más chica bajando este % ) */
   max-width: 50px;    /* Límite: no medirá más de 250px aunque la pantalla sea grande */
   height: auto;        /* Truco vital: mantiene la proporción para que no se vea aplastada */
   margin: 0 auto;}
