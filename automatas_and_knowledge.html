@@ -11,14 +11,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 <style>
-
-
   /* ---------- Contenido ---------- */
   main { max-width: 720px; margin: 0 auto; padding: 3.5rem 1.25rem 4rem; }
   .kicker {
     color: var(--muted); font-size: .85rem; letter-spacing: .12em;
     text-transform: uppercase; margin: 0 0 .5rem;
   }
+  main.essay p {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
   h1 {
     font-size: clamp(2rem, 6vw, 3rem); line-height: 1.15;
     font-weight: 700; color: var(--accent); margin: 0 0 .8rem;
@@ -36,7 +39,7 @@
     font-size: 1.35rem; font-weight: 700; color: var(--accent);
     margin: 3rem 0 .8rem; padding-top: 1.2rem; border-top: 1px solid var(--line);
   }
-  p { margin: 0 0 1.15rem; }
+  p { margin: 0 0 1.15rem; text-align: justify;}
   code {
     font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
     background: var(--surface); border: 1px solid var(--line);
@@ -111,6 +114,7 @@ svg.automata text {
     <button id="tb" aria-label="Toggle theme"></button>
   </div>
 </nav>
+<div class="wrap">
 
 <main id="top">
   <p class="kicker">Ensayo</p>
@@ -339,8 +343,10 @@ svg.automata text {
       <p>And deciding to continue it.</p>
     </div>
   </section>
-</main>
 
+
+</main>
+</div>
 <footer class="site-footer">
   <span>Santa Rosa de Lima, La Unión · El Salvador</span>
   <a href="emblema-emxtorres.svg" target="_blank" rel="noopener">© 2026 Emerson Torres</a>
