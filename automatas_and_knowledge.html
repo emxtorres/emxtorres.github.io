@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Emerson Torres</title>
+  <link rel="icon" type="image/png" href="icon.png">
+  <link href="https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+<style>
+
+
+  /* ---------- Contenido ---------- */
+  main { max-width: 720px; margin: 0 auto; padding: 3.5rem 1.25rem 4rem; }
+  .kicker {
+    color: var(--muted); font-size: .85rem; letter-spacing: .12em;
+    text-transform: uppercase; margin: 0 0 .5rem;
+  }
+  h1 {
+    font-size: clamp(2rem, 6vw, 3rem); line-height: 1.15;
+    font-weight: 700; color: var(--accent); margin: 0 0 .8rem;
+  }
+  .subtitle { font-size: 1.15rem; color: var(--muted); margin: 0 0 2rem; font-weight: 300; }
+  .central {
+    border-left: 3px solid var(--accent);
+    padding: .4rem 0 .4rem 1.2rem; margin: 0 0 3rem;
+    font-style: italic; font-size: 1.1rem;
+  }
+  .langs { font-size: .9rem; color: var(--muted); margin: -2rem 0 2.5rem; }
+  #en, #top { scroll-margin-top: 4.5rem; }
+  .divider { border: 0; border-top: 2px solid var(--accent); margin: 5rem 0 3rem; }
+  h2 {
+    font-size: 1.35rem; font-weight: 700; color: var(--accent);
+    margin: 3rem 0 .8rem; padding-top: 1.2rem; border-top: 1px solid var(--line);
+  }
+  p { margin: 0 0 1.15rem; }
+  code {
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    background: var(--surface); border: 1px solid var(--line);
+    padding: .05em .4em; border-radius: 4px; font-size: .92em;
+  }
+  .word {
+    text-align: center; font-size: 1.4rem; margin: 1.5rem 0;
+    font-family: ui-monospace, Menlo, Consolas, monospace; letter-spacing: .15em;
+  }
+  .chain {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    gap: .6rem; margin: 1.2rem 0;
+  }
+  .chain span.node {
+    background: var(--surface); border: 1px solid var(--line);
+    padding: .35rem .9rem; border-radius: 999px; font-weight: 500;
+  }
+  .chain span.node.me { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .chain span.arrow { color: var(--accent); }
+
+  figure { margin: 2rem 0; }
+  figure svg { width: 100%; height: auto; display: block; }
+  figcaption { text-align: center; color: var(--muted); font-size: .85rem; margin-top: .4rem; }
+
+  svg.automata {
+  width: 100%;
+  height: auto;
+  display: block;
+  color: var(--text);              /* o var(--accent) si lo prefieres carmesí / rosa */
+}
+svg.automata [stroke="black"] { stroke: currentColor; }
+svg.automata [fill="black"]   { fill: currentColor; }
+svg.automata text {
+  fill: currentColor;
+  font-family: "Noto Sans JP", serif;  /* opcional: reemplaza Times New Roman */
+}
+
+  .closing {
+    margin: 3.5rem 0 0; padding: 2rem 1.5rem; text-align: center;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    font-size: 1.2rem; font-style: italic; color: var(--accent); font-weight: 500;
+  }
+  .closing p { margin: 0 0 .5rem; }
+  .closing p:last-child { margin: 0; }
+
+  footer {
+    border-top: 1px solid var(--line); text-align: center;
+    padding: 1.5rem 1.25rem 2.5rem; color: var(--muted); font-size: .85rem;
+  }
+  footer a { color: var(--muted); }
+  @media print { header, footer { display: none; } }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">
+      <img src="Logo.svg" alt="">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">§ Home</a></li>
+      <li><a href="cv.html">§ CV</a></li>
+      <li><a href="publications.html">§ Publications</a></li>
+      <li><a href="teaching.html">§ Teaching</a></li>
+      <li><a href="seminars.html">§ Seminars</a></li>
+      <li><a href="art.html" class="active">§ Art</a></li>
+    </ul>
+    <button id="burger" aria-label="Menú" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+    <button id="tb" aria-label="Toggle theme"></button>
+  </div>
+</nav>
+
+<main id="top">
+  <p class="kicker">Ensayo</p>
+  <h1>Automatos y la transmisión del conocimiento</h1>
+  <p class="subtitle">Emerson W. Torres B.</p>
+  <i>[Este texto fue escrito con asistencia de inteligencia artificial. — E. T.]</i>
+  <p class="central">¿Cuánto de una persona puede sobrevivir en lo que enseña?</p>
+  <p class="langs"><strong>Español</strong> · <a href="#en">English ↓</a></p>
+
+  <h2>Una sensación extraña</h2>
+  <p>Hay algo que me parece increíble sobre aprender. A veces estamos estudiando algo que fue pensado por alguien que vivió mucho antes que nosotros: alguien cuyo rostro nunca vimos y cuya voz nunca escuchamos. Y, sin embargo, de alguna manera, esa persona está ahí. Está en un libro, en una demostración, en una manera particular de explicar una idea. Y, a veces, está en otra persona.</p>
+
+  <h2>Mi profesora</h2>
+  <p>Estoy cursando una materia de autómatas, y tengo una profesora que me parece particularmente interesante. Tiene muchísima personalidad, y hay algo en su manera de explicar las cosas que hace que la clase se sienta diferente. Ella fue alumna del profesor Imre Simon.</p>
+  <p>Yo nunca conocí al profesor Simon. Ni siquiera tuve la oportunidad de escucharlo dar una clase. Pero a veces, sentado en una clase de autómatas, tengo la sensación extraña de que estoy conociendo un poquito de él.</p>
+
+  <h2>La transmisión</h2>
+  <p>Quizá una parte de la manera en que ella enseña viene de él. Quizá alguna explicación que utiliza es algo que aprendió de él; quizá una forma de pensar un problema, una manera de mirar una demostración, una intuición. Y quizá ella tomó todo eso y lo transformó: lo hizo suyo, lo pulió, lo mezcló con sus propias experiencias. Y ahora, de alguna manera, eso llegó hasta mí.</p>
+  <p>Eso me parece genial.</p>
+
+  <h2>El conocimiento como herencia</h2>
+  <p>Normalmente pensamos en el conocimiento como algo que vive en los libros: una definición, un teorema, una fórmula, una demostración. Pero quizá el conocimiento también tiene una historia. Una persona aprende algo, lo interpreta y lo enseña. Otra persona lo recibe y lo modifica. Después lo enseña nuevamente.</p>
+  <p>Y después de varias generaciones quizá ya ni siquiera podemos separar completamente qué vino de quién. Pero algo quedó.</p>
+
+  <h2>¿Qué es un autómata?</h2>
+  <p>Todo esto quizá suene demasiado filosófico para hablar de autómatas, así que vayamos a lo concreto: ¿qué es un autómata?</p>
+  <p>La idea básica es sorprendentemente sencilla. Imagina una máquina que está leyendo una palabra, por ejemplo</p>
+  <div class="word">0101101</div>
+  <p>La máquina tiene algunos estados y, dependiendo del símbolo que lee, cambia de uno a otro. Si está en cierto estado y lee un cero, va hacia uno; si lee un uno, va hacia otro. Después vuelve a leer, vuelve a cambiar de estado, y así continúa hasta terminar la palabra. Al final, dependiendo del estado en el que terminó, la máquina dice «acepto» o «rechazo».</p>
+
+  <h2>La belleza del autómata</h2>
+  <p>Hay algo que me encanta de esto: diseñar un autómata es, en cierta forma, resolver un pequeño rompecabezas. Te dicen: «quiero una máquina que acepte exactamente las palabras que tienen esta propiedad», y tú tienes que descubrir cómo construirla.</p>
+  <p>Por ejemplo: queremos aceptar todas las palabras binarias que contienen <code>010</code>. Parece una condición sencilla, pero ahora hay que preguntarse qué necesita recordar la máquina. Si acabo de ver un <code>0</code>, quizá necesito recordarlo. Si después veo un <code>1</code>, ahora sé que llevo <code>01</code>. Y si después aparece otro <code>0</code>, encontré <code>010</code>. Así, la máquina necesita solo cuatro estados:</p>
+
+  <figure>
+   
+<svg class="automata" viewBox="40 30 620 230" xmlns="http://www.w3.org/2000/svg">
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="228.5" cy="127.5" rx="30" ry="30"/>
+	<text x="220.5" y="133.5" font-family="Times New Roman" font-size="20">q&#8320;</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="351.5" cy="127.5" rx="30" ry="30"/>
+	<text x="343.5" y="133.5" font-family="Times New Roman" font-size="20">q&#8321;</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="471.5" cy="127.5" rx="30" ry="30"/>
+	<text x="463.5" y="133.5" font-family="Times New Roman" font-size="20">q&#8322;</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="601.5" cy="127.5" rx="30" ry="30"/>
+	<text x="593.5" y="133.5" font-family="Times New Roman" font-size="20">q&#8323;</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="601.5" cy="127.5" rx="24" ry="24"/>
+	<polygon stroke="black" stroke-width="1" points="168.5,127.5 198.5,127.5"/>
+	<text x="55.5" y="133.5" font-family="Times New Roman" font-size="20">A:</text>
+	<polygon fill="black" stroke-width="1" points="198.5,127.5 190.5,122.5 190.5,132.5"/>
+	<polygon stroke="black" stroke-width="1" points="381.5,127.5 441.5,127.5"/>
+	<polygon fill="black" stroke-width="1" points="441.5,127.5 433.5,122.5 433.5,132.5"/>
+	<text x="406.5" y="148.5" font-family="Times New Roman" font-size="20">1</text>
+	<polygon stroke="black" stroke-width="1" points="258.5,127.5 321.5,127.5"/>
+	<polygon fill="black" stroke-width="1" points="321.5,127.5 313.5,122.5 313.5,132.5"/>
+	<text x="285.5" y="148.5" font-family="Times New Roman" font-size="20">0</text>
+	<polygon stroke="black" stroke-width="1" points="501.5,127.5 571.5,127.5"/>
+	<polygon fill="black" stroke-width="1" points="571.5,127.5 563.5,122.5 563.5,132.5"/>
+	<text x="531.5" y="148.5" font-family="Times New Roman" font-size="20">0</text>
+	<path stroke="black" stroke-width="1" fill="none" d="M 215.275,100.703 A 22.5,22.5 0 1 1 241.725,100.703"/>
+	<text x="223.5" y="51.5" font-family="Times New Roman" font-size="20">1</text>
+	<polygon fill="black" stroke-width="1" points="241.725,100.703 250.473,97.17 242.382,91.292"/>
+	<path stroke="black" stroke-width="1" fill="none" d="M 338.275,100.703 A 22.5,22.5 0 1 1 364.725,100.703"/>
+	<text x="346.5" y="51.5" font-family="Times New Roman" font-size="20">0</text>
+	<polygon fill="black" stroke-width="1" points="364.725,100.703 373.473,97.17 365.382,91.292"/>
+	<path stroke="black" stroke-width="1" fill="none" d="M 458.052,154.242 A 129.341,129.341 0 0 1 241.948,154.242"/>
+	<polygon fill="black" stroke-width="1" points="241.948,154.242 242.168,163.673 250.522,158.177"/>
+	<text x="345.5" y="233.5" font-family="Times New Roman" font-size="20">1</text>
+	<path stroke="black" stroke-width="1" fill="none" d="M 588.275,100.703 A 22.5,22.5 0 1 1 614.725,100.703"/>
+	<text x="589.5" y="51.5" font-family="Times New Roman" font-size="20">0,1</text>
+	<polygon fill="black" stroke-width="1" points="614.725,100.703 623.473,97.17 615.382,91.292"/>
+</svg>
+  </figure>
+
+  <p>Y de repente, una propiedad sobre una cantidad potencialmente infinita de palabras se convierte en una pequeña máquina con unos pocos estados. Eso me parece hermoso.</p>
+
+  <h2>La sorpresa matemática</h2>
+  <p>El autómata no está memorizando todas las palabras que conoce. No podría: hay infinitas. Lo que hace es encontrar una manera pequeña de representar la información que realmente importa. Ahí aparece una de las cosas que más me gustan de las matemáticas: encontrar una estructura pequeña que capture algo enorme.</p>
+
+  <h2>Volvemos a los maestros</h2>
+  <p>Mientras más pienso en esto, más me interesa otra cosa. Yo estoy aprendiendo estas ideas de mi profesora. Ella las aprendió de otras personas, que a su vez las aprendieron de otras. Algunas de estas ideas tienen décadas; algunas tienen siglos.</p>
+  <p>Por eso fui a la biblioteca y busqué un libro de Imre Simon. También terminé viendo un video sobre la vida del Profesor Martínez, quien fue profesor de mi profesor. Y ahí la cadena empieza a hacerse todavía más extraña:</p>
+  <div class="chain">
+    <span class="node">Profesor Martínez</span><span class="arrow">⟶</span>
+    <span class="node">Mi Profesor</span><span class="arrow">⟶</span>
+    <span class="node">yo</span>
+  </div>
+  <div class="chain">
+    <span class="node">Imre Simon</span><span class="arrow">⟶</span>
+    <span class="node">Mi profesora de automatos</span><span class="arrow">⟶</span>
+    <span class="node">yo</span>
+  </div>
+  <p>Yo nunca conocí a algunas de estas personas, pero puedo encontrar pequeñas partes de ellas en las personas que sí conocí.</p>
+
+  <h2>El maestro como <em>sensei</em></h2>
+  <p>Quizá por eso siempre me ha gustado tanto la idea de los maestros en algunas historias japonesas: el <em>sensei</em>. En historias como <em>Naruto</em>, <em>Demon Slayer</em> o <em>My Hero Academia</em>, el maestro no está ahí simplemente para enseñar una técnica. Forma parte de la transformación del protagonista. Le enseña algo que va mucho más allá de una habilidad: una manera de pensar, una manera de enfrentarse a los problemas, a veces incluso una manera de vivir.</p>
+  <p>Y quizá en la vida real ocurre algo parecido.</p>
+
+  <h2>Una pequeña diferencia con el anime</h2>
+  <p>Aunque hay una diferencia. En el anime normalmente vemos al maestro: sabemos quién es, escuchamos sus historias, vemos cómo entrenó al protagonista. En la vida real, muchas veces no. A veces solamente recibimos una idea, una frase que alguien nos enseñó, una manera de resolver un problema, una forma particular de explicar algo. Y quizá nunca sepamos exactamente de dónde vino.</p>
+  <p>Pero sigue viajando.</p>
+
+  <h2>La idea más bonita</h2>
+  <p>Creo que esa es una de las cosas más bonitas de aprender: quizá nosotros no somos el comienzo de nada. Somos parte de una cadena. Alguien nos enseñó algo, nosotros lo entendimos de una determinada manera, quizá lo cambiamos un poco, y algún día quizá se lo enseñemos a alguien más.</p>
+  <p>Y esa persona probablemente tampoco sabrá de dónde vino originalmente. Pero algo de nosotros habrá quedado ahí.</p>
+
+  <h2>Final: curiosidad y esperanza</h2>
+  <p>Quizá por eso me gusta tanto estudiar. No solamente porque haya problemas interesantes, ni solamente porque una demostración pueda ser hermosa, sino porque existe esta sensación extraña de que estamos participando en algo muchísimo más grande que nosotros: una conversación que empezó antes de que naciéramos y que probablemente continuará después de que nos vayamos.</p>
+  <p>Y quizá eso sea una de las formas más bonitas de tener esperanza. Saber que todavía hay cosas que no entendemos, que todavía hay cosas que alguien puede descubrir, que todavía podemos aprender de personas que nunca conoceremos. Y que algún día quizá alguien aprenda algo de nosotros.</p>
+
+  <div class="closing">
+    <p>Quizá aprender sea, en parte, recibir una pregunta que alguien más comenzó a responder.</p>
+    <p>Y decidir continuarla.</p>
+  </div>
+
+  <!-- ==================== ENGLISH ==================== -->
+  <hr class="divider">
+  <section id="en" lang="en">
+    <p class="kicker">Essay</p>
+<h1>Automata and the Transmission of Knowledge</h1>
+  <p class="subtitle">Emerson W. Torres B.</p>
+    <i>[This text was written with the assistance of AI. — E. T.]</i>
+    <p class="central">How much of a person can survive in what they teach?</p>
+    <p class="langs"><a href="#top">↑ Español</a> · <strong>English</strong></p>
+
+    <h2>A strange feeling</h2>
+    <p>There is something incredible about learning. Sometimes we are studying something that was conceived by someone who lived long before us: someone whose face we never saw and whose voice we never heard. And yet, somehow, that person is there. They are in a book, in a proof, in a particular way of explaining an idea. And sometimes, they are in another person.</p>
+
+    <h2>My professor</h2>
+    <p>I am taking a course on automata, and I have a professor I find particularly interesting. She has a great deal of personality, and there is something in the way she explains things that makes the class feel different. She was a student of Professor Imre Simon.</p>
+    <p>I never met Professor Simon. I never even had the chance to hear him give a lecture. But sometimes, sitting in an automata class, I get the strange feeling that I am getting to know a little bit of him.</p>
+
+    <h2>The transmission</h2>
+    <p>Perhaps part of the way she teaches comes from him. Perhaps some explanation she uses is something she learned from him; perhaps a way of thinking about a problem, a way of looking at a proof, an intuition. And perhaps she took all of that and transformed it: made it her own, polished it, blended it with her own experiences. And now, somehow, it has reached me.</p>
+    <p>I think that is wonderful.</p>
+
+    <h2>Knowledge as inheritance</h2>
+    <p>We usually think of knowledge as something that lives in books: a definition, a theorem, a formula, a proof. But perhaps knowledge also has a history. One person learns something, interprets it, and teaches it. Another person receives it and modifies it. Then they teach it again.</p>
+    <p>And after several generations, perhaps we can no longer fully separate what came from whom. But something remained.</p>
+
+    <h2>What is an automaton?</h2>
+    <p>All of this may sound too philosophical for a piece about automata, so let's get concrete: what is an automaton?</p>
+    <p>The basic idea is surprisingly simple. Imagine a machine reading a word, for example</p>
+    <div class="word">0101101</div>
+    <p>The machine has a few states and, depending on the symbol it reads, it moves from one to another. If it is in a certain state and reads a zero, it goes to one place; if it reads a one, it goes to another. Then it reads again, changes state again, and continues until the word ends. At the end, depending on the state it finished in, the machine says “accept” or “reject.”</p>
+
+    <h2>The beauty of the automaton</h2>
+    <p>There is something I love about this: designing an automaton is, in a way, solving a small puzzle. They tell you, “I want a machine that accepts exactly the words with this property,” and you have to figure out how to build it.</p>
+    <p>For example: we want to accept all binary words that contain <code>010</code>. It seems like a simple condition, but now you have to ask what the machine needs to remember. If I just saw a <code>0</code>, maybe I need to remember it. If I then see a <code>1</code>, now I know I have <code>01</code>. And if another <code>0</code> appears, I found <code>010</code>. So the machine needs only four states:</p>
+
+    <figure>
+<svg class="automata" viewBox="40 30 620 230" xmlns="http://www.w3.org/2000/svg">
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="228.5" cy="127.5" rx="30" ry="30"/>
+	<text x="220.5" y="133.5" font-family="Times New Roman" font-size="20">q&#8320;</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="351.5" cy="127.5" rx="30" ry="30"/>
+	<text x="343.5" y="133.5" font-family="Times New Roman" font-size="20">q&#8321;</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="471.5" cy="127.5" rx="30" ry="30"/>
+	<text x="463.5" y="133.5" font-family="Times New Roman" font-size="20">q&#8322;</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="601.5" cy="127.5" rx="30" ry="30"/>
+	<text x="593.5" y="133.5" font-family="Times New Roman" font-size="20">q&#8323;</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="601.5" cy="127.5" rx="24" ry="24"/>
+	<polygon stroke="black" stroke-width="1" points="168.5,127.5 198.5,127.5"/>
+	<text x="55.5" y="133.5" font-family="Times New Roman" font-size="20">A:</text>
+	<polygon fill="black" stroke-width="1" points="198.5,127.5 190.5,122.5 190.5,132.5"/>
+	<polygon stroke="black" stroke-width="1" points="381.5,127.5 441.5,127.5"/>
+	<polygon fill="black" stroke-width="1" points="441.5,127.5 433.5,122.5 433.5,132.5"/>
+	<text x="406.5" y="148.5" font-family="Times New Roman" font-size="20">1</text>
+	<polygon stroke="black" stroke-width="1" points="258.5,127.5 321.5,127.5"/>
+	<polygon fill="black" stroke-width="1" points="321.5,127.5 313.5,122.5 313.5,132.5"/>
+	<text x="285.5" y="148.5" font-family="Times New Roman" font-size="20">0</text>
+	<polygon stroke="black" stroke-width="1" points="501.5,127.5 571.5,127.5"/>
+	<polygon fill="black" stroke-width="1" points="571.5,127.5 563.5,122.5 563.5,132.5"/>
+	<text x="531.5" y="148.5" font-family="Times New Roman" font-size="20">0</text>
+	<path stroke="black" stroke-width="1" fill="none" d="M 215.275,100.703 A 22.5,22.5 0 1 1 241.725,100.703"/>
+	<text x="223.5" y="51.5" font-family="Times New Roman" font-size="20">1</text>
+	<polygon fill="black" stroke-width="1" points="241.725,100.703 250.473,97.17 242.382,91.292"/>
+	<path stroke="black" stroke-width="1" fill="none" d="M 338.275,100.703 A 22.5,22.5 0 1 1 364.725,100.703"/>
+	<text x="346.5" y="51.5" font-family="Times New Roman" font-size="20">0</text>
+	<polygon fill="black" stroke-width="1" points="364.725,100.703 373.473,97.17 365.382,91.292"/>
+	<path stroke="black" stroke-width="1" fill="none" d="M 458.052,154.242 A 129.341,129.341 0 0 1 241.948,154.242"/>
+	<polygon fill="black" stroke-width="1" points="241.948,154.242 242.168,163.673 250.522,158.177"/>
+	<text x="345.5" y="233.5" font-family="Times New Roman" font-size="20">1</text>
+	<path stroke="black" stroke-width="1" fill="none" d="M 588.275,100.703 A 22.5,22.5 0 1 1 614.725,100.703"/>
+	<text x="589.5" y="51.5" font-family="Times New Roman" font-size="20">0,1</text>
+	<polygon fill="black" stroke-width="1" points="614.725,100.703 623.473,97.17 615.382,91.292"/>
+</svg>
+    </figure>
+
+    <p>And suddenly, a property about a potentially infinite number of words becomes a small machine with just a few states. I find that beautiful.</p>
+
+    <h2>The mathematical surprise</h2>
+    <p>The automaton is not memorizing every word it knows. It couldn’t: there are infinitely many. What it does is find a small way of representing the information that truly matters. That is where one of the things I love most about mathematics appears: finding a small structure that captures something enormous.</p>
+
+    <h2>Back to the teachers</h2>
+    <p>The more I think about this, the more another thing interests me. I am learning these ideas from my professor. She learned them from other people, who in turn learned them from others. Some of these ideas are decades old; some are centuries old.</p>
+    <p>So I went to the library and looked for a book by Imre Simon. I also ended up watching a video about the life of Professor Martínez, who was the teacher of my own advisor. And there the chain becomes even stranger:</p>
+    <div class="chain">
+      <span class="node">Professor Martínez</span><span class="arrow">⟶</span>
+      <span class="node">My advisor</span><span class="arrow">⟶</span>
+      <span class="node">me</span>
+    </div>
+    <div class="chain">
+      <span class="node">Imre Simon</span><span class="arrow">⟶</span>
+      <span class="node">My automata theory professor</span><span class="arrow">⟶</span>
+      <span class="node">me</span>
+    </div>
+    <p>I never met some of these people, but I can find small pieces of them in the people I did meet.</p>
+
+    <h2>The teacher as <em>sensei</em></h2>
+    <p>Perhaps that is why I have always loved the idea of teachers in some Japanese stories: the <em>sensei</em>. In stories like <em>Naruto</em>, <em>Demon Slayer</em>, or <em>My Hero Academia</em>, the teacher is not there simply to teach a technique. They are part of the protagonist’s transformation. They teach something that goes far beyond a skill: a way of thinking, a way of facing problems, sometimes even a way of living.</p>
+    <p>And perhaps something similar happens in real life.</p>
+
+    <h2>A small difference from anime</h2>
+    <p>There is one difference, though. In anime we usually get to see the teacher: we know who they are, we hear their stories, we see how they trained the protagonist. In real life, often we don’t. Sometimes we only receive an idea, a phrase someone taught us, a way of solving a problem, a particular way of explaining something. And perhaps we will never know exactly where it came from.</p>
+    <p>But it keeps travelling.</p>
+
+    <h2>The most beautiful idea</h2>
+    <p>I think this is one of the most beautiful things about learning: perhaps we are not the beginning of anything. We are part of a chain. Someone taught us something, we understood it in a certain way, perhaps we changed it a little, and someday perhaps we will teach it to someone else.</p>
+    <p>And that person probably won’t know where it originally came from either. But something of us will have remained there.</p>
+
+    <h2>Ending: curiosity and hope</h2>
+    <p>Perhaps that is why I love studying so much. Not only because there are interesting problems, nor only because a proof can be beautiful, but because of this strange feeling that we are taking part in something far greater than ourselves: a conversation that began before we were born and will probably continue after we are gone.</p>
+    <p>And perhaps that is one of the most beautiful forms of hope. Knowing that there are still things we do not understand, that there are still things someone can discover, that we can still learn from people we will never meet. And that someday, perhaps, someone will learn something from us.</p>
+
+    <div class="closing">
+      <p>Perhaps learning is, in part, receiving a question that someone else began to answer.</p>
+      <p>And deciding to continue it.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span>Santa Rosa de Lima, La Unión · El Salvador</span>
+  <a href="emblema-emxtorres.svg" target="_blank" rel="noopener">© 2026 Emerson Torres</a>
+  <span>Last modified: Sun 04 Oct 2026</span>
+</footer>
+
+<script>
+  const h=document.documentElement,b=document.getElementById('tb');
+  function t(d){d?h.setAttribute('data-dark',''):h.removeAttribute('data-dark');b.textContent=d?'☀':'☽';localStorage.setItem('dark',d)}
+  const s=localStorage.getItem('dark');
+  t(s!==null?s==='true':window.matchMedia('(prefers-color-scheme:dark)').matches);
+  b.onclick=()=>t(!h.hasAttribute('data-dark'));
+  const burger = document.getElementById('burger');
+const navList = document.querySelector('.nav-links');
+burger.addEventListener('click', () => {
+  const open = burger.classList.toggle('open');
+  navList.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open);
+});
+navList.querySelectorAll('a').forEach(a =>
+  a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    navList.classList.remove('open');
+  })
+);
+</script>
+
+</body>
+</html>
